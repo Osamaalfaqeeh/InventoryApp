@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InventoryApp.API</name>
+    </assembly>
+    <members>
+        <member name="T:InventoryApp.API.Controllers.AuthController">
+            <summary>
+            Handles authentication-related operations.
+            </summary>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.AuthController.#ctor(InventoryApp.Application.Auth.ITokenService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InventoryApp.API.Controllers.AuthController"/> class.
+            </summary>
+            <param name="tokenService">Service for generating JWT tokens.</param>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.AuthController.Login(InventoryApp.Application.Auth.LoginRequest)">
+            <summary>
+            Authenticates a user and returns a JWT token if successful.
+            </summary>
+            <param name="request">Login credentials (username and password).</param>
+            <returns>A JWT token if authentication is successful; otherwise, Unauthorized.</returns>
+        </member>
+        <member name="T:InventoryApp.API.Controllers.ProductsController">
+            <summary>
+            Controller for managing products
+            </summary>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.#ctor(MediatR.IMediator)">
+            <summary>
+            Initializes a new instance of the ProductsController class.
+            </summary>
+            <param name="mediator">MediatR instance for handling requests.</param>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.GetProducts">
+            <summary>
+            Retrieve all Products
+            </summary>
+            <returns>A list of products</returns>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.GetProduct(System.Guid)">
+            <summary>
+            Retrieve specific product by ID.
+            </summary>
+            <param name="id">The ID of the product.</param>
+            <returns>The requested product if found.</returns>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.PutProduct(System.Guid,InventoryApp.Application.Products.DTOs.UpdateProductDto)">
+            <summary>
+            Updates a product.
+            </summary>
+            <param name="id">The ID of the product to update.</param>
+            <param name="product">The updated product data.</param>
+            <returns>No content if successful; otherwise, a bad request.</returns>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.PatchProduct(System.Guid,InventoryApp.Application.Products.DTOs.PatchProductDto)">
+            <summary>
+            Partially updates a product.
+            </summary>
+            <param name="id">The ID of the product to patch.</param>
+            <param name="product">The patch data.</param>
+            <returns>No content if successful; otherwise, a bad request.</returns>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.PostProduct(InventoryApp.Application.Products.DTOs.CreateProductDto)">
+            <summary>
+            Creates a new product.
+            </summary>
+            <param name="product">The product to create.</param>
+            <returns>The ID of the created product.</returns>
+        </member>
+        <member name="M:InventoryApp.API.Controllers.ProductsController.DeleteProduct(System.Guid)">
+            <summary>
+            Deletes a product by ID.
+            </summary>
+            <param name="id">The ID of the product to delete.</param>
+            <returns>OK if successful; NotFound if the product does not exist.</returns>
+        </member>
+        <member name="T:InventoryApp.API.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Contains extension methods for registering services and application configuration.
+            </summary>
+        </member>
+        <member name="M:InventoryApp.API.Extensions.ServiceCollectionExtensions.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers application-level services including MediatR, FluentValidation, and pipeline behaviors.
+            </summary>
+            <param name="services">The service collection to add to.</param>
+            <returns>Services</returns>
+        </member>
+        <member name="M:InventoryApp.API.Extensions.ServiceCollectionExtensions.AddJwtAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures JWT authentication based on settings in app configuration.
+            </summary>
+            <param name="services">The service collection to add to.</param>
+            <param name="config">Application configuration.</param>
+            <returns>Serivces</returns>
+        </member>
+        <member name="M:InventoryApp.API.Extensions.ServiceCollectionExtensions.AddSwaggerWithJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Swagger and configures JWT support for Swagger UI.
+            </summary>
+            <param name="services">The service collection to add to.</param>
+            <returns>Services</returns>
+        </member>
+        <member name="T:InventoryApp.API.Middleware.ExceptionHandlingMiddleware">
+            <summary>
+            Provides a centralized mechanism for handling unhandled exceptions across the application,
+            including validation errors, and returning standardized error responses.
+            </summary>
+        </member>
+        <member name="M:InventoryApp.API.Middleware.ExceptionHandlingMiddleware.UseCustomExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configures a global exception handler that catches exceptions and returns
+            consistent JSON error responses, including validation errors.
+            </summary>
+            <param name="app">The application builder used to configure middleware.</param>
+        </member>
+    </members>
+</doc>
