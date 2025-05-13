@@ -26,11 +26,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AssemblyReference).Assembly));
-
-//builder.Services.AddValidatorsFromAssemblyContaining<AssemblyReference>();
-
-//builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 var app = builder.Build();
 
