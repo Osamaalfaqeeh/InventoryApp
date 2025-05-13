@@ -55,7 +55,9 @@ dotnet ef database update --startup-project ../InventoryApp.API
 
 ```bash
 cd ../InventoryApp.API
-dotnet run --project InventoryApp.API
+dotnet run
+or
+dotnet run --launch-profile "https"
 ```
 
 Go to: `https://localhost:<port>/swagger`
